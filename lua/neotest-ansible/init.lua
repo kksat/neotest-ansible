@@ -49,8 +49,8 @@ end
 function neotest.Adapter.build_spec(args)
 	local run_cmd = { "ansible-playbook", args.tree.id }
 	return {
-		command = run_cmd[1],
-		args = { unpack(run_cmd, 2) },
+		command = "ansible-playbook",
+		-- args = { unpack(run_cmd, 2) },
 		context = {
 			cwd = args.tree.path:match("(.*/)"),
 		},
