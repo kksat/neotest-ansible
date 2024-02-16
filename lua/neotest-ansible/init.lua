@@ -61,11 +61,11 @@ function neotest.Adapter.results(spec, result, tree)
 	-- Simplified: This should parse the output from Ansible and map it to test results.
 	-- Here we assume success if the command exit code is 0.
 	local success = result.code == 0
-	local output = result.output
+	local output = result.output or ""
 	return {
 		[tree.id] = {
 			status = success and "passed" or "failed",
-			-- output = output,
+			output = output,
 		},
 	}
 end
