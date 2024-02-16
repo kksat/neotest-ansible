@@ -65,7 +65,7 @@ function neotest.Adapter.results(spec, result, tree)
 	return {
 		[tree.id] = {
 			status = success and "passed" or "failed",
-			output = output,
+			-- output = output,
 		},
 	}
 end
