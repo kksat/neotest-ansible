@@ -23,7 +23,7 @@ function AnsibleNeotestAdapter.filter_dir(name, rel_path, root)
 end
 
 function AnsibleNeotestAdapter.is_test_file(file_path)
-	return file_path:match("test_.*%.yml$") ~= nil
+	return file_path:match("test_.*%.yml$") ~= nil or file_path:match("test_.*%.yaml$") ~= nil
 end
 
 function AnsibleNeotestAdapter.discover_positions(file_path)
