@@ -1,4 +1,5 @@
-local neotest = require("neotest.lib")
+local lib = require("neotest.lib")
+local async = require("neotest.async")
 
 ---@class neotest.Adapter
 ---@field name string
@@ -7,19 +8,7 @@ AnsibleNeotestAdapter = {
 }
 
 function AnsibleNeotestAdapter.root(dir)
-	-- Simplified: Assuming the root is where a specific marker (e.g., ansible.cfg) is found.
-	-- This function should be adapted to properly identify your Ansible project root.
-	local uv = vim.loop
-	while dir do
-		if uv.fs_stat(vim.fn.join({ dir, "ansible.cfg" })) then
-			return dir
-		end
-		dir = vim.fn.fnamemodify(dir, ":h")
-		if dir == "/" then
-			break
-		end
-	end
-	return nil
+	return vim.fn.getcwd()
 end
 
 function AnsibleNeotestAdapter.filter_dir(name, rel_path, root)
